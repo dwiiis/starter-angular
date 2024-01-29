@@ -1,0 +1,29 @@
+<div class="md:w-25rem sm:w-auto">
+  <p class="text-primary mb-4">Filter By:</p>
+  <form [formGroup]="formGroup" (submit)="onSubmit()">
+    <div class="flex flex-column gap-2 mb-3">
+      <label for="username">Username</label>
+      <input type="text" pInputText placeholder="Type username" class="p-inputtext-sm" formControlName="username" />
+    </div>
+    <div class="flex flex-column gap-2 mb-3">
+      <label for="username">PIC</label>
+      <input type="text" pInputText placeholder="Type PIC" class="p-inputtext-sm" formControlName="pic" />
+    </div>
+
+    <div class="flex justify-content-between gap-2 mb-3">
+      <div class="flex flex-column gap-2">
+        <label for="icondisplay"> From Date </label>
+        <p-calendar class="p-inputtext-sm w-full" formControlName="dateFrom" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay"></p-calendar>
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="icondisplay"> To Date </label>
+        <p-calendar class="p-inputtext-sm w-full" formControlName="dateTo" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay"></p-calendar>
+      </div>
+    </div>
+
+    <div class="flex flex-row flex-wrap justify-content-end mt-5">
+      <p-button label="Reset" icon="pi pi-refresh" [outlined]="true" class="mr-2" size="small" (onClick)="resetForm()"></p-button>
+      <p-button label="Apply" icon="pi pi-check" size="small" type="submit"></p-button>
+    </div>
+  </form>
+</div>

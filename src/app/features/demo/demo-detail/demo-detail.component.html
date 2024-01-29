@@ -1,0 +1,75 @@
+<div class="grid">
+  <div class="col-12">
+    <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+
+    <div class="card">
+      <div class="grid">
+        <div class="col-12 lg:col-6 xl:col-3">
+          <div class="card mb-0">
+            <p class="text-primary font-bold mb-3">User Detail</p>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Username</p>
+              <p class="text-900 mb-0">{{user?.first_name}}</p>
+            </div>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Role</p>
+              <p class="text-900 mb-0">role 001</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 lg:col-6 xl:col-3">
+          <div class="card mb-0">
+            <p class="text-primary font-bold mb-3">PIC Detail</p>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">PIC</p>
+              <p class="text-900 mb-0">PIC 001</p>
+            </div>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Email</p>
+              <p class="text-900 mb-0">{{user?.email}}</p>
+            </div>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Phone Number</p>
+              <p class="text-900 mb-0">08918181818</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 lg:col-6 xl:col-3">
+          <div class="card mb-0">
+            <p class="text-primary font-bold mb-3">History Detail</p>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Created By</p>
+              <p class="text-900 mb-0">PIC 001</p>
+            </div>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Created Date</p>
+              <p class="text-900 mb-0">01 Jan 2024</p>
+            </div>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Modified By</p>
+              <p class="text-900 mb-0">User 6</p>
+            </div>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Modified Date</p>
+              <p class="text-900 mb-0">06 Jan 2024</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 lg:col-6 xl:col-3">
+          <div class="card mb-0">
+            <p class="text-primary font-bold mb-3">Other Detail</p>
+            <div class="flex flex-column gap-1 mb-2">
+              <p class="font-italic text-sm mb-0">Description</p>
+              <p class="text-900 mb-0">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo con</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap justify-content-center mt-3 gap-2">
+        <p-button label="Back" icon="pi pi-arrow-left" [outlined]="true" (onClick)="goToBack()"></p-button>
+        <p-button label="Delete" icon="pi pi-trash" severity="danger"></p-button>
+        <p-button label="Update" icon="pi pi-pencil" type="submit"></p-button>
+      </div>
+    </div>
+  </div>
+</div>

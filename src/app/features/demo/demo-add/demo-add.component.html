@@ -1,0 +1,48 @@
+<div class="grid">
+  <div class="col-12">
+    <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+
+    <div class="card">
+      <form [formGroup]="formGroup" (submit)="onSubmit()">
+        <div class="grid">
+          <div class="col-12 lg:col-6 xl:col-6">
+            <div class="flex flex-column gap-2 mb-3">
+              <label for="username">Username</label>
+              <input type="text" pInputText placeholder="Type username" formControlName="username" />
+            </div>
+            <div class="flex flex-column gap-2 mb-3">
+              <label for="username">Role Name</label>
+              <p-dropdown [options]="cities" styleClass="w-full" optionLabel="name" formControlName="role" placeholder="Select"></p-dropdown>
+            </div>
+            <div class="flex flex-column gap-2 mb-3">
+              <label for="username">Created By</label>
+              <input type="text" pInputText disabled="true" placeholder="Admin" />
+            </div>
+            <div class="flex flex-column gap-2 mb-3">
+              <label for="username">Description</label>
+              <textarea rows="5" cols="30" pInputTextarea formControlName="description"></textarea>
+            </div>
+          </div>
+          <div class="col-12 lg:col-6 xl:col-6">
+            <div class="flex flex-column gap-2 mb-3">
+              <label for="username">PIC</label>
+              <p-dropdown [options]="cities" styleClass="w-full" optionLabel="name" formControlName="pic" placeholder="Select"></p-dropdown>
+            </div>
+            <div class="flex flex-column gap-2 mb-3">
+              <label for="username">Email</label>
+              <input type="text" pInputText formControlName="email" placeholder="Type Email" />
+            </div>
+            <div class="flex flex-column gap-2 mb-3">
+              <label for="username">Phone Number</label>
+              <input type="text" pInputText formControlName="phoneNumber" placeholder="Type Phone Number" (keypress)="allowOnlyNumbers($event)" />
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-row flex-wrap justify-content-center mt-3 gap-2">
+          <p-button label="Cancel" icon="pi pi-times" [outlined]="true" (onClick)="goToBack()"></p-button>
+          <p-button label="Submit" icon="pi pi-send" [disabled]="formGroup.invalid" type="submit"></p-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

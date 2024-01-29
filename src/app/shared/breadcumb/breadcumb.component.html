@@ -1,0 +1,18 @@
+<nav class="mb-4">
+  <ng-container *ngFor="let br of breadcrumbs.list; let last = last; let first = first">
+    <span class="font-italic">
+      <ng-container *ngIf="first">
+        <i class="pi pi-arrow-left text-xs mr-0 mr-2"></i>
+      </ng-container>
+      <ng-container *ngIf="!last; else lastCrumb">
+        <span class="text-gray-500 cursor-pointer hover:underline" (click)="goToPage(br.link)"> {{ br.label }}</span> <span class="px-2">/</span>
+      </ng-container>
+      <ng-template #lastCrumb>
+        <span class="font-semibold text-primary cursor-pointer hover:underline" (click)="goToPage(br.link)"> {{ br.label }}</span>
+      </ng-template>
+    </span>
+  </ng-container>
+  <h3 class="text-primary font-semibold font-italic">
+    {{ breadcrumbs.list[breadcrumbs.list.length - 1]?.label }}
+  </h3>
+</nav>

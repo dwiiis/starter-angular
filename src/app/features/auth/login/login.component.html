@@ -1,0 +1,36 @@
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+  <div class="md:flex shadow-md w-full">
+    <div class="relative md:w-6 p-6 md:h-screen sm:w-full bg-gray-900">
+      <div class="md:absolute text-white md:w-8 translate-xy-50 top-50 left-50">
+        <i class="text-sm">Selamat datang di,</i>
+        <h1 class="text-5xl font-semibold mb-4 text-white">STARTER</h1>
+        <p class="text-sm">
+          <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+          galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+        </p>
+      </div>
+    </div>
+    <div class="md:w-6 md:p-6 sm:w-full relative">
+      <div class="w-8 md:absolute text-white md:w-8 translate-xy-50 top-50 left-50">
+        <div class="text-center mb-5">
+          <img src="assets/images/angular-black.png" alt="Image" height="80" class="mb-3" />
+        </div>
+        <form [formGroup]="loginForm" (submit)="onSubmit()" sub>
+          <div>
+            <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+            <input id="email1" type="text" placeholder="Email address" pInputText class="w-full mb-3" formControlName="email" />
+
+            <label for="password1" class="block text-900 font-medium mb-2">Password</label>
+            <input id="password1" type="password" placeholder="Password" pInputText class="w-full mb-3" formControlName="password" />
+
+            <div class="flex align-items-center justify-content-center mb-4 mt-3">
+              <span class="text-600 font-medium line-height-3">Forget password ?</span>
+              <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"> reset here</a>
+            </div>
+          </div>
+          <button pButton label="Sign In" class="w-full" type="submit" [disabled]="loginForm.invalid" [loading]="isLoading"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

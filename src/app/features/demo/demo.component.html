@@ -1,0 +1,95 @@
+<div class="grid">
+  <div class="col-12">
+    <app-breadcrumb [breadcrumbs]="breadcrumbs"></app-breadcrumb>
+
+    <div class="card">
+      <div class="flex flex-row flex-wrap justify-content-between mb-4">
+        <div>
+          <p-button label="Filter" icon="pi pi-filter" (click)="panelFilter.show($event)"></p-button>
+
+          <div class="p-input-icon-left ml-2">
+            <i class="pi pi-search text-primary"></i>
+            <input type="text" pInputText placeholder="Type here" class="md:w-25rem sm:w-auto" [formControl]="searchValue" />
+          </div>
+        </div>
+        <p-button label="Add" icon="pi pi-plus" (onClick)="goToAdd()"></p-button>
+      </div>
+
+      <div class="flex mb-4 align-items-center" *ngIf="dataFiltered?.length > 0">
+        <p class="mb-0 mr-2">Filtered by :</p>
+        <div *ngFor="let item of dataFiltered">
+          <p-chip label="{{ item }}" class="mr-1" [removable]="true" (onRemove)="onRemoveChip(item)"></p-chip>
+        </div>
+      </div>
+      <p-table
+        [value]="users"
+        [lazy]="true"
+        (onLazyLoad)="loadData($event)"
+        [paginator]="true"
+        [paginatorPosition]="'bottom'"
+        [rows]="6"
+        dataKey="id"
+        [totalRecords]="totalRecords"
+        [scrollable]="true"
+        [loading]="loadingUsers"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 4rem" pFrozenColumn>
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th pSortableColumn="name" style="min-width: 100px">Avatar <p-sortIcon field="name"></p-sortIcon></th>
+            <th style="width: 100px">Email</th>
+            <th style="min-width: 200px">Alias Name</th>
+            <th style="width: 100px">Name</th>
+            <th style="width: 100px">Email</th>
+            <th style="min-width: 200px">Alias Name</th>
+            <th style="width: 100px">Name</th>
+            <th style="width: 100px">Email</th>
+            <th style="width: 100px" alignFrozen="right" pFrozenColumn [frozen]="true">Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td style="width: 4rem" pFrozenColumn>
+              <p-tableCheckbox [value]="user"></p-tableCheckbox>
+            </td>
+            <td style="min-width: 100px">
+              <p-avatar [image]="user.avatar" styleClass="mr-2" size="small" shape="circle"></p-avatar>
+            </td>
+            <td style="width: 100px">{{ user.email }}</td>
+            <td style="min-width: 200px">{{ user.last_name }}</td>
+            <td style="width: 100px">{{ user.first_name }}</td>
+            <td style="width: 100px">{{ user.email }}</td>
+            <td style="min-width: 200px">{{ user.last_name }}</td>
+            <td style="width: 100px">{{ user.first_name }}</td>
+            <td style="width: 100px">{{ user.email }}</td>
+            <td style="width: 200px" alignFrozen="right" pFrozenColumn [frozen]="true">
+              <div class="flex">
+                <p-button [rounded]="true" [text]="true" icon="pi pi-ellipsis-h" (click)="onShowMenu($event, menu, user)"></p-button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="7">No Data found.</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="loadingbody">
+          <tr>
+            <td colspan="8">Loading Data data. Please wait.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<p-contextMenu #menu [model]="itemsBtn"></p-contextMenu>
+
+<p-overlayPanel #panelFilter>
+  <ng-template pTemplate="content">
+    <app-demo-filter (closeEvent)="closeOverlay()" (formEvent)="onFilterData($event)" (resetEvent)="onResetFilter()" [initialFormFilter]="initialFiltered"></app-demo-filter>
+  </ng-template>
+</p-overlayPanel>
